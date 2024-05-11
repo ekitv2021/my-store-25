@@ -1,0 +1,32 @@
+<form [formGroup]="addForm" (ngSubmit)="addProduct()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+    </div>
+    <div class="alert alert-danger" *ngIf="f['name'].touched && f['name'].invalid">
+        NAME IS REQUIRED
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" class="form-control" id="price" formControlName="price">
+    </div>
+    <div class="alert alert-danger" *ngIf="f['price'].touched && f['price'].invalid && f['price'].hasError('required')">
+        PRICE IS REQUIRED
+    </div>
+    <div class="alert alert-danger" *ngIf="f['price'].touched && f['price'].invalid && f['price'].hasError('max')">
+        PRICE IS ABOVE MAXIMUM RANGE
+    </div>
+    <div class="alert alert-danger" *ngIf="f['price'].touched && f['price'].invalid && f['price'].hasError('min')">
+        PRICE IS BELOW MINIMUM RANGE
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" rows="5" class="form-control" formControlName="description"></textarea>
+    </div>
+    <input type="hidden" formControlName="image">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- json pipe here is just display the entire content of the entire form as json 
+    and is not converted it into json -->
+{{addForm.value | json}}

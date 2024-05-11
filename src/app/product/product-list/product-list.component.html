@@ -1,0 +1,36 @@
+<div class="row m-4">
+    <div class="col-md-8">
+        <input type="text" class="form-control" 
+        placeholder="Enter the text to search..." [(ngModel)]="filterBy">
+    </div>
+    <div class="col">
+        {{ filterBy }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <a class="btn btn-primary m-3" routerLink="/products/add">Add Product</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" *ngFor="let p of filteredProducts">
+        <div class="card mb-4 border-0 text-center" style="width: 18rem;">
+            <img [src]="p.image" [ngStyle]="{'width':'200px', 'height': '200px'}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" [routerLink]="['/products',p.id]"
+                [ngStyle]="{'cursor':'pointer'}">{{ p.name }}</h5>
+              <p class="card-text">{{ p.price }}</p>
+              <p class="card-text">{{ p.description }}</p>
+              <a class="btn btn-primary" (click)="addToCart()">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</div>

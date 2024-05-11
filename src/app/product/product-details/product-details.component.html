@@ -1,0 +1,22 @@
+<div class="row">
+    <a (click)="goBack()" class="btn btn-primary col-3 m-3">Back</a>
+</div>
+<div class="row m-4" *ngIf="product$ | async as prod">
+    <div class="col">
+        <img [src]="prod.image" [ngStyle]="{'width':'100%'}">
+    </div>
+    <div class="col">
+        <h3>{{prod.name}}</h3>
+        <h5>{{prod.price | currency : 'INR'}}</h5>
+        <h5>{{prod.description}}</h5>
+        <button class="btn btn-danger m-2" (click)="delete(prod.id)">Remove</button>
+        <button class="btn btn-secondary m-2" [routerLink]="['/products',prod.id,'edit']">Edit</button>
+    </div>
+    <div class="row">
+        <button class="col-3 btn btn-warning" 
+        [routerLink]="['/products',prod.id,'review']">Reviews</button>
+        <button class="col-3 btn btn-warning"
+        [routerLink]="['/products',prod.id,'order']">Order</button>
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,4 @@
+.navbar-nav .nav-link.active{
+    color: rgb(50, 79, 184);
+    font-variant: small-caps;
+}

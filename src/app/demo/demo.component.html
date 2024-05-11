@@ -1,0 +1,22 @@
+<input type="text" [(ngModel)]="name">
+
+<br>
+
+<input type="number" [(ngModel)]="age" placeholder="Enter your age">
+
+<br><br>
+<button (click)="unsubscribeA()">Unsubscribe A</button>
+<br>
+<br>
+<button (click)="subscribeB()">Subscribe B</button>
+<br>
+<br>
+<button (click)="unsubscribeB()">Unsubscribe B</button>
+
+<br>
+<br>
+<!-- Here async pipe will subscribe to the observable myColors$
+and return the string[] on which we can apply the loop -->
+<div *ngFor="let c of myColors$ | async">
+    {{ c }}
+</div>

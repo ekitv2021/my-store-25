@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "One Plus 12R",
+      "price": 40000,
+      "image": "/assets/One Plus 12R.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rerum aliquam perspiciatis maxime maiores cum, obcaecati atque quae? Nam, architecto facilis! Numquam, quas voluptatibus. Doloremque nemo sunt voluptatibus distinctio?"
+    },
+    {
+      "id": "3",
+      "name": "Realme 12 Pro",
+      "price": 24000,
+      "image": "/assets/Realme 12 Pro.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rerum aliquam perspiciatis maxime maiores cum, obcaecati atque quae? Nam, architecto facilis! Numquam, quas voluptatibus. Doloremque nemo sunt voluptatibus distinctio?"
+    },
+    {
+      "id": "4",
+      "name": "Samsung Galaxy S24",
+      "price": 100000,
+      "image": "/assets/Samsung Galaxy S24.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rerum aliquam perspiciatis maxime maiores cum, obcaecati atque quae? Nam, architecto facilis! Numquam, quas voluptatibus. Doloremque nemo sunt voluptatibus distinctio?"
+    },
+    {
+      "id": "5",
+      "name": "Apple iPhone 13",
+      "price": 55000,
+      "image": "/assets/Apple iPhone 13.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rerum aliquam perspiciatis maxime maiores cum, obcaecati atque quae? Nam, architecto facilis! Numquam, quas voluptatibus. Doloremque nemo sunt voluptatibus distinctio?"
+    },
+    {
+      "name": "Apple Phone",
+      "price": 100000,
+      "image": "/assets/Apple iPhone 13.jpg",
+      "description": "New Apple phone in the market",
+      "id": "0048"
+    },
+    {
+      "name": "Oppo 19",
+      "price": 30000,
+      "image": "/assets/Apple iPhone 13.jpg",
+      "description": "Price reduced for oppo phone",
+      "id": "5b77"
+    },
+    {
+      "id": "2e38",
+      "name": "One Plus Nord 4",
+      "price": 24000,
+      "image": "/assets/Apple iPhone 13.jpg",
+      "description": "New phone by one plus"
+    }
+  ]
+}

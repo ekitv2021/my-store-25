@@ -1,0 +1,146 @@
+In typescript, interface is used to define the structure of the object. It helps us to ensure that each object follows the structure defined for it, thereby reducing the errors in the execution.
+
+To create an interface we can use the following command:
+ng g i product
+
+----------------------------------------------------------
+RxJS
+
+Javascript library incorporated within angular to provide asynchronous operations.
+
+asynchronous => parallel operation
+
+It plays a very important role in handling HTTP request.
+HTTP request means interacting with the backend server using REST API
+
+In RxJS, we follow a convention to include $ as the suffix for any variable declaration. The basic purpose of doing this is to just distinguish between the normal variables and RxJS variables.
+
+It has components:
+1. Observable: It is fundamental part of RxJS. It is a stream of data or some events that occurs over the period of time. We can consume the data only if we subscribe to it. Observable can be created using Creation Operators or new Observable.
+2. Observer: Is actually the subscriber that listens and consumes the notification sent by the Observable and provide the code to handle these notification. By default it handles next notification but we can handle other two also.
+3. Operators: Are like the tools/functions that can be used to create, transform, filter, combine or do any type of the manipulation on the data stream of the Observable.
+
+    There are two types of operators:
+    1. Creation: Are used to create the observable
+    2. Pipeable: Are used to perform the different operations on the already existing observable
+4. Subjects: Is a type of the observable that allows the value to be multicasted to multiple subscribers. Multicasted means the value is given to the subscribes in the broadcasted form. Ideally for each subscribers of the observable individual execution path is created whereas in the case of subject only one execution path is created for each subscribers
+5. Subscription: This object is created when we subscribe to an observable, but when we want to unsubscribe from the observable, we need to create a variable of type Subscription, assign it the result of the subscribe statement and then use this variable for unsubscription
+
+Anatomy of Observable
+1. Create the observable: We can create the observable using creation operators or new Observable statement
+
+2. Subscribe to the observable: We can consume the values of the observable after subscribing to it
+
+3. Executing the Observable: The code inside new Observable represents Observable execution that will be executing only for the subscriber
+    Execute path of the observable has three types notification:
+    1. next => send the next value like number, array, string....
+    2. error => error or exception occuring in the observable
+    3. complete => observable is saying I am done have no more values
+
+4. Disposing Observable Execution: Sometimes the observable will give out the values in infinite sequence which we can unsubscribe from.
+
+async pipe: It is a built-in pipe which can be used to subscribe and unsubscribe automatically from the observable.
+
+Difference Between Observable and Subject
+1. Observable are unicast, whereas Subject are multicast:
+    unicast => for every subscriber, new execution path of the observable will start. It is like watching recorded video where every user starts viewing the video from the start even if the they are not joining together.
+    multicast => for every subscriber, same execution path of the observable will continue. It is like watching a live match where any subscriber joining will not see the match from the start but from the live the moment.
+
+2. Observable are immutable, whereas Subject are mutable: 
+    immutable => once created, we cannot add new items in the observable manually
+    mutable => we can manually add new items to the subject at any time using next() method
+
+3. Observable are cold, whereas Subjects are cold or hot:
+    Cold => here data is not shared among multiple subscribers, each subscriber will get the entire sequence of the data from the start
+    Hot => here the data can added manually using next() method and it is shared across multiple subscribers
+
+HTTP request
+
+In Angular we can send HTTP request to the backend server and interact with it.
+
+The methods required to do interaction with the backend are provided in the in-built service called HttpClient which is a part of HttpClientModule
+
+All the method of the HttpClient service returns the Observable which we will have to subscribe
+
+------------------------------------------------------------------------
+Routing and Navigation
+
+Routing is the mechanism using which the Angular application can implement navigation from one component to the another using URL.
+
+For implementing, routing we will have to import RouterModule. This module contain some service, directives that are needed for performing routing
+
+Components of the RouterModule:
+1. Routes: It used to define the mapping between URL pattern and component.     Each route will consist of majorily, URL patter, component name, but we can also define the title of the page
+2. RouterOutlet: It is a directives used in the layout of the template of the component to specify the location where the component corresponding to the URL should be shown
+3. RouterLink: It is an attribute directive used to specify the URL that we want to navigate to. This directive will become property when we want to pass the dynamic value in the URL
+4. RouterLinkActive: It is an attribute directive used to specify the name of the class that will be applied when the link becomes active
+5. Router: It is service which is used to navigate using the program functions
+
+Step to implement routing in the project:
+1. Import RouterModule in app.module.ts
+2. Define routes for even component. In routes we will configure the URL that will be used to reach the component
+3. Define this routes array as the reference to be used using the forRoot function of the RouterModule
+4. In the main component, like here app.component.html add the <router-outlet></router-outlet> directives
+5. Update the navigation link in the navbar using routerLink direction
+
+While specifying the path for the routes we can consider following types:
+1. static path: fixed paths associated with the components
+2. dynamic path: paths that contains variables or parameters which will get the value at the runtime, like /products/:id, :id is the variable which will get value at the runtime based on the product we want to display
+3. empty path: default path that does not match with any routes
+4. wild path: path that match any URL pattern that does not match with already specified path. This path should be declared as the last path 
+
+Query parameters
+
+Are the parameters we can pass dynamic to the component in key=value pairs
+
+Guards
+
+Guards are used in angular to protect the routes before the navigate the component is done.
+
+Types of Guards:
+1. CanActivate: used to determine whether a route can be activated or not. It is used to avoid unauthorized access.
+2. CanActivateChild: similar to CanActivate but applicable on child routes
+3. CanDeactivate: It is used to check for any unsaved work before leaving the route.
+4. CanLoad: used for the entire module. It can be used to restrict the access to all the components of the module
+
+Steps
+1. Create a guard function 
+    ng g g verify-id-guard
+
+--------------------------------------------------
+Form
+
+Types of forms:
+1. Template Driven Forms: simple form that are created purely in the template of the component. these form required the ngModel directive to map the elements with the properties
+
+2. Reactive Forms: complex form, where some of the form elements are created at the runtime, here both the class and template of the component will be used to create the form
+
+There are classes that will applied to individual field of the form and also to the form
+In all, at a time 3 classes will be applied, these 3 class can be combinations of the following
+
+touched(was in focus): ng-touched, ng-untouched
+changed the value of the control: ng-pristine, ng-dirty
+validation: ng-invalid, ng-valid
+
+we can use the above classes to change the styling of the form and also display the error message for the invalid fields.
+
+Template variable => these variable are declared in the template pf the component rather then the class. Template variable are always declared with the # as the prefix
+
+#author="ngModel" ==> this statement will declare a template variable which refers to the complete control mapped using ngModel
+
+Modules
+1. Feature Modules are used to group the components, directives, services, etc for one a particular functionality.
+
+To create a feature module we can use the command
+
+ng g m product
+
+Reactive Form
+To create Reactive forms we need to import ReactiveFormsModule
+
+Reactive form controls are first declared in the class file and then mapped with the template form fields
+
+FormGroup => create a new form
+FormControl => create a new control
+
+Environment is used to manage the configuration of the different environments like development, production, testing
