@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductModule } from './product/product.module';
+import { SampleComponent } from './sample/sample.component';
 
 const routes: Routes = [
   { path: "products", loadChildren: () => import('./product/product.module')
@@ -27,6 +28,7 @@ const routes: Routes = [
     HomeComponent,
     ProfileComponent,
     PagenotfoundComponent,
+    SampleComponent,
   ],
   imports: [
     BrowserModule,
